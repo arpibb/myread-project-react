@@ -1,12 +1,13 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import BookShelf from './BookShelf'
 import './App.css'
 
 class ListMyBooks extends Component {
 
   render(){
-    console.log(this.props.books)
-    
+    const { books } = this.props
+    const shelfNames = ['currentlyReading', 'wantToRead', 'read']
     return(
       <div>
         <div className="list-books">
@@ -14,21 +15,17 @@ class ListMyBooks extends Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-              
-            </div>
+            {shelfNames.map((shelfName,idx) => {
+              return(
+                <BookShelf 
+                  className="bookshelf"
+                  key = {idx}
+                  shelfName = {shelfName}
+                  books = {books}
+              />
+            )})}
         </div>
-        <ul>
-          {[...this.props.books].map((book)=> {
-            return(
-              <li key= {book.title}>
-                {book.title}
-                <img src={book.imageLinks.smallThumbnail}/>
-              </li>
-            )
-          })}
-        </ul>
-        <BookShelf/>
-
+      </div>
       </div>
     )
   }
