@@ -4,8 +4,9 @@ import BookShelf from './BookShelf'
 import './App.css'
 
 class ListMyBooks extends Component {
-
+  
   render(){
+    console.log(this.props.books)
     const { books } = this.props
     const shelfNames = ['currentlyReading', 'wantToRead', 'read']
     return(

@@ -17,7 +17,11 @@ class BookShelf extends Component {
             {books && books.filter(book => book.shelf === shelfName).map((book)=>{
               return(
                 <li>
-                  <Book/>
+                  <Book
+                    title = {book.title}
+                    thumbnail = {book.imageLinks.thumbnail}
+                    
+                  />
                 </li>
             )})}
           </ol>
