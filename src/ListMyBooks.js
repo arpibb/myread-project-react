@@ -2,13 +2,12 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import BookShelf from './BookShelf'
 import './App.css'
+import * as BooksAPI from './BooksAPI'
 
 class ListMyBooks extends Component {
   
   render(){
-    console.log(this.props.books)
-    const { books } = this.props
-    const shelfNames = ['currentlyReading', 'wantToRead', 'read']
+    const { books, updateBookList, shelves } = this.props
     return(
       <div>
         <div className="list-books">
@@ -16,14 +15,17 @@ class ListMyBooks extends Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-            {shelfNames.map((shelfName,idx) => {
+            {shelves && Object.keys(shelves).map((shelfName,idx) => {
+              console.log(shelves)
               return(
                 <BookShelf 
                   className="bookshelf"
                   key = {idx}
-                  shelfName = {shelfName}
+                  canonicalShelfName = {shelfName}
+                  shelfName = {shelves[shelfName]}
                   books = {books}
-              />
+                  updateBookList = {updateBookList}
+                  />
             )})}
         </div>
       </div>
