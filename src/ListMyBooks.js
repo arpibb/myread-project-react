@@ -16,7 +16,7 @@ class ListMyBooks extends Component {
             </div>
             <div className="list-books-content">
             {shelves && Object.keys(shelves).map((shelfName,idx) => {
-              console.log(shelves)
+              //console.log(shelves)
               return(
                 <BookShelf 
                   className="bookshelf"
@@ -37,7 +37,7 @@ class ListMyBooks extends Component {
 ListMyBooks.propTypes = {
   books: PropTypes.array.isRequired,
   updateBookList: PropTypes.func.isRequired,
-  shelves: PropTypes.array.isRequired
+  shelves: PropTypes.object.isRequired
 }
 
 export default ListMyBooks

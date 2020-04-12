@@ -13,8 +13,8 @@ class BooksAppReact extends React.Component {
       currentlyReading: 'Currently Reading',
       wantToRead: 'Want To Read',
       read: 'Read',
-
-    }
+    },
+    queryResults: [],
   }
 
   componentDidMount(){
@@ -33,8 +33,31 @@ class BooksAppReact extends React.Component {
     this.setState(()=>({
       books: copyBooks
     }))
-    BooksAPI.update(book,shelf).then((res) => console.log(res))
+    BooksAPI.update(book,shelf)//.then((res) => console.log(res))
   }
+
+  searchAPIForBooks = (query) => {
+    console.log(query)
+    BooksAPI.search(query).then((queryResults) =>{
+      console.log(queryResults)
+      if(!queryResults || queryResults.error){
+        this.setState(()=>({
+          queryResults: []
+        }))
+      }
+      else{
+        this.setState(()=>({
+          queryResults: queryResults
+        }))
+      }
+      // }catch(error){
+      //   console.error(error)
+      //   
+      // }
+      })
+  }
+
+
 
   render(){
     return(
@@ -47,7 +70,12 @@ class BooksAppReact extends React.Component {
           />
         )} />
         <Route path='/search' render={({ history }) => (
-          <SearchBooks/>
+          <SearchBooks
+            books = {this.state.books}
+            updateBookList = {this.updateBookList}
+            searchBookList = {this.searchAPIForBooks}
+            queryResults = {this.state.queryResults}
+          />
         )} />
         <div className="open-search">
           <Link to='/search'><button></button></Link>

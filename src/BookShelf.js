@@ -15,7 +15,7 @@ class BookShelf extends Component {
         <div className="bookshelf-books">
           <ol className="books-grid">
             {books && books.filter(book => book.shelf === canonicalShelfName).map((book,idx)=>{
-              console.log(books)
+              //console.log(books)
               return(
                 <li key={idx}>
                   <Book
