@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import './App.css'
 
 class Book extends Component {
@@ -30,6 +31,14 @@ class Book extends Component {
       </div>
     )
   }
+}
+
+Book.propTypes = {
+  book: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+  authors: PropTypes.array.isRequired,
+  shelf: PropTypes.string.isRequired
 }
 
 export default Book

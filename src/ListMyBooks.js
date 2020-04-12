@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import BookShelf from './BookShelf'
 import './App.css'
-import * as BooksAPI from './BooksAPI'
+
 
 class ListMyBooks extends Component {
   
@@ -32,6 +32,12 @@ class ListMyBooks extends Component {
       </div>
     )
   }
+}
+
+ListMyBooks.propTypes = {
+  books: PropTypes.array.isRequired,
+  updateBookList: PropTypes.func.isRequired,
+  shelves: PropTypes.array.isRequired
 }
 
 export default ListMyBooks

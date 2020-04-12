@@ -4,6 +4,7 @@ import ListMyBooks from './ListMyBooks'
 import SearchBooks from './SearchBooks'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
+import { Link } from 'react-router-dom'
 
 class BooksAppReact extends React.Component {
   state ={
@@ -48,6 +49,9 @@ class BooksAppReact extends React.Component {
         <Route path='/search' render={({ history }) => (
           <SearchBooks/>
         )} />
+        <div className="open-search">
+          <Link to='/search'><button></button></Link>
+        </div>
       </div>
     )
   }
