@@ -4,9 +4,18 @@ import './App.css'
 
 class Book extends Component {
 
-  handleChange = (event,book) => {
+  handleChange = (event,book, shelf) => {
     console.log(book)
-    this.props.updateBookList(book,event.target.value)
+    const targetShelf = event.target.value
+    if(targetShelf === 'none'){
+      this.props.removeFromMyBooks(book)
+    }
+    if(shelf !== 'none'){
+      this.props.updateBookList(book, targetShelf)
+    }
+    else{
+      this.props.addToBookList(book.id,targetShelf)
+    }
   }
 
   render(){
@@ -17,7 +26,7 @@ class Book extends Component {
         <div className="book-top" >
           <img src={`${thumbnail}`} className="book-cover" alt={`Thumbnail of the book: ${title}`}></img>
           <div className="book-shelf-changer">
-            <select onChange={(event) => this.handleChange(event,book)} defaultValue={shelf ? shelf : 'none' }>
+            <select onChange={(event) => this.handleChange(event,book,shelf)} defaultValue={shelf ? shelf : 'none' }>
               <option value="move" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>

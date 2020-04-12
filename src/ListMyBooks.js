@@ -5,9 +5,13 @@ import './App.css'
 
 
 class ListMyBooks extends Component {
+
+  componentDidMount(){
+    this.props.emptyResults()
+  }
   
   render(){
-    const { books, updateBookList, shelves } = this.props
+    const { books, updateBookList, shelves, removeFromMyBooks } = this.props
     return(
       <div>
         <div className="list-books">
@@ -25,6 +29,7 @@ class ListMyBooks extends Component {
                   shelfName = {shelves[shelfName]}
                   books = {books}
                   updateBookList = {updateBookList}
+                  removeFromMyBooks ={removeFromMyBooks}
                   />
             )})}
         </div>

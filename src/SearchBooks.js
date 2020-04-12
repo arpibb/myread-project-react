@@ -4,8 +4,9 @@ import SearchBooksBar from './SearchBooksBar'
 import SearchResults from './SearchResults'
 
 class SearchBooks extends Component {
+
   render(){
-    const {books,searchBookList, queryResults, emptyResults } = this.props
+    const {books,searchBookList, updateBookList,removeFromMyBooks, queryResults, emptyResults, booksIDs, addToBookList } = this.props
     return(
       <div>
         <SearchBooksBar 
@@ -15,6 +16,10 @@ class SearchBooks extends Component {
         <SearchResults 
           books = { books }
           queryResults = {queryResults}
+          booksIDs = {booksIDs}
+          addToBookList = {addToBookList}
+          updateBookList = {updateBookList}
+          removeFromMyBooks = {removeFromMyBooks}
         />
       </div>
     )
