@@ -16,7 +16,7 @@ class SearchResults extends Component {
                   <Book
                     book = {book}
                     title = {book.title}
-                    thumbnail = {book.previewLinks}
+                    thumbnail = {book.imageLinks ? book.imageLinks.smallThumbnail : '' }
                     authors = {book.authors}
                     shelf = {book.shelf ? book.shelf : 'none'}
                   />

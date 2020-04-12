@@ -21,7 +21,7 @@ class BookShelf extends Component {
                   <Book
                     book = {book}
                     title = {book.title}
-                    thumbnail = {book.imageLinks.smallThumbnail}
+                    thumbnail = {book.imageLinks? book.imageLinks.smallThumbnail : ''}
                     authors = {book.authors}
                     updateBookList = {updateBookList}
                     shelf = {book.shelf}

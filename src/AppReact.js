@@ -37,7 +37,6 @@ class BooksAppReact extends React.Component {
   }
 
   searchAPIForBooks = (query) => {
-    console.log(query)
     BooksAPI.search(query).then((queryResults) =>{
       console.log(queryResults)
       if(!queryResults || queryResults.error){
@@ -50,11 +49,12 @@ class BooksAppReact extends React.Component {
           queryResults: queryResults
         }))
       }
-      // }catch(error){
-      //   console.error(error)
-      //   
-      // }
-      })
+    })
+  }
+  emptySearchResults = () =>{
+    this.setState(()=>({
+      queryResults: []
+    }))
   }
 
 
@@ -75,6 +75,7 @@ class BooksAppReact extends React.Component {
             updateBookList = {this.updateBookList}
             searchBookList = {this.searchAPIForBooks}
             queryResults = {this.state.queryResults}
+            emptyResults = {this.emptySearchResults}
           />
         )} />
         <div className="open-search">

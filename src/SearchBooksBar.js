@@ -15,10 +15,16 @@ class SearchBooksBar extends Component {
     }))
     this.props.searchBookList(query)
   }
+
   render(){
+    const { emptyResults } = this.props
     return(
       <div className="search-books-bar">
-        <Link to='/'><button className="close-search">Close</button></Link>
+        <Link 
+          to='/'><button 
+          className="close-search"
+          onClick = {emptyResults}
+        >Close</button></Link>
         <div className="search-books-input-wrapper">
         {/*
           NOTES: The search from BooksAPI is limited to a particular set of search terms.
