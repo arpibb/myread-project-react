@@ -14,7 +14,7 @@ class Book extends Component {
       this.props.updateBookList(book, targetShelf)
     }
     else{
-      this.props.addToBookList(book.id,targetShelf)
+      this.props.addToBookList(book,targetShelf)
     }
   }
 

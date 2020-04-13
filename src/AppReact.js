@@ -20,6 +20,10 @@ class BooksAppReact extends React.Component {
   }
 
   componentDidMount(){
+    this.initializeStates()
+  }
+
+  initializeStates(){
     BooksAPI.getAll()
       .then((books) => {
         this.setState(()=>({
@@ -31,20 +35,18 @@ class BooksAppReact extends React.Component {
       })
   }
 
-  addToBookList = (bookID,shelf) =>{
-    // debugger
-    BooksAPI.get(bookID).then((book)=>{
+  addToBookList = (book,shelf) =>{
+    // BooksAPI.get(bookID).then((book)=>{
       book.shelf = shelf
       const copyBooksIDs = {...this.state.booksIDs}
-      console.log(copyBooksIDs)
-      copyBooksIDs[bookID] = Object.keys(copyBooksIDs).length
+      copyBooksIDs[book.id] = Object.keys(copyBooksIDs).length
       this.setState((prevState)=>({
         books: [...prevState.books,book],
         booksIDs: copyBooksIDs
-      }))
-      return book
-    }).then((book) => {
-      BooksAPI.update(book,shelf)
+      })) 
+    // }).then((book) => {
+      BooksAPI.update(book,shelf).then(() => {
+      this.getBooksIDs(this.state.books)
     })
   }
 
@@ -62,10 +64,10 @@ class BooksAppReact extends React.Component {
     const bookIdx = this.state.books.findIndex(b => book.id === b.id )
     let copyOfBooks = [...this.state.books]
     copyOfBooks.splice(1,bookIdx)
-    this.setState(()=>({
+    this.setState(()=>{return{
       books: copyOfBooks
-    }))
-    
+    }},()=> {this.getBooksIDs(this.state.books)})
+    BooksAPI.update(book,'none')
   }
 
   searchAPIForBooks = (query) => {
@@ -96,8 +98,8 @@ class BooksAppReact extends React.Component {
     }
     this.setState(()=>({
       booksIDs: booksIDs 
-    }))
-    console.log(this.state.booksIDs)
+    }),()=> {console.log(this.state.booksIDs)})
+    
   }
 
   emptySearchResults = () =>{

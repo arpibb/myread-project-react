@@ -11,26 +11,30 @@ class ListMyBooks extends Component {
   }
   
   render(){
-    const { books, updateBookList, shelves, removeFromMyBooks } = this.props
+    const { 
+      books, 
+      updateBookList, 
+      shelves, 
+      removeFromMyBooks } = this.props
+      
     return(
       <div>
         <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-            <div className="list-books-content">
-            {shelves && Object.keys(shelves).map((shelfName,idx) => {
-              //console.log(shelves)
-              return(
-                <BookShelf 
-                  className="bookshelf"
-                  key = {idx}
-                  canonicalShelfName = {shelfName}
-                  shelfName = {shelves[shelfName]}
-                  books = {books}
-                  updateBookList = {updateBookList}
-                  removeFromMyBooks ={removeFromMyBooks}
-                  />
+          <div className="list-books-title">
+            <h1>MyReads</h1>
+          </div>
+          <div className="list-books-content">
+          {shelves && Object.keys(shelves).map((shelfName,idx) => {
+            return(
+              <BookShelf 
+                className="bookshelf"
+                key = {shelfName}
+                canonicalShelfName = {shelfName}
+                shelfName = {shelves[shelfName]}
+                books = {books}
+                updateBookList = {updateBookList}
+                removeFromMyBooks ={removeFromMyBooks}
+                />
             )})}
         </div>
       </div>
@@ -42,7 +46,9 @@ class ListMyBooks extends Component {
 ListMyBooks.propTypes = {
   books: PropTypes.array.isRequired,
   updateBookList: PropTypes.func.isRequired,
-  shelves: PropTypes.object.isRequired
+  shelves: PropTypes.object.isRequired,
+  removeFromMyBooks: PropTypes.func.isRequired,
+  emptyResults: PropTypes.func.isRequired
 }
 
 export default ListMyBooks

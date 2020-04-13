@@ -14,10 +14,10 @@ class BookShelf extends Component {
         <h2 className="bookshelf-title">{shelfName}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
-            {books && books.filter(book => book.shelf === canonicalShelfName).map((book,idx)=>{
+            {books && books.filter(book => book.shelf === canonicalShelfName).map((book)=>{
               //console.log(books)
               return(
-                <li key={idx}>
+                <li key={book.id}>
                   <Book
                     book = {book}
                     title = {book.title}

@@ -6,20 +6,23 @@ class SearchResults extends Component {
   render(){
     const { books, updateBookList, queryResults, booksIDs, addToBookList, removeFromMyBooks } = this.props
     let shelf
-    //console.log(books)
+    let bookIDKeys = Object.keys(booksIDs)
     return(
       <div className="search-books-results">
         <ol className="books-grid">
-          {queryResults && queryResults.length !==0 && booksIDs && queryResults.map((book,idx) => {
-            if(Object.keys(booksIDs).includes(book.id)){
-              shelf = books[booksIDs[book.id]].shelf
+          {queryResults && queryResults.length !==0 && bookIDKeys.length === books.length && queryResults.map((book) => {
+            if(bookIDKeys.includes(book.id)){
+              let indexOfBook = booksIDs[book.id]
+              console.log(indexOfBook)
+              shelf = books[indexOfBook].shelf
+              console.log('shelf is:',shelf)
               // console.log(shelf)
             }
             else{
               shelf = 'none'
             }
             return(
-              <li key={idx}>
+              <li key={book.id}>
                 <Book
                   book = {book}
                   title = {book.title}
