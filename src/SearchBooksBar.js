@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-import './App.css'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import './App.css'
 
 class SearchBooksBar extends Component {
   state = {
@@ -11,18 +12,15 @@ class SearchBooksBar extends Component {
     e.preventDefault()
     let query = e.target.value
     this.props.updateQuery(query)
+
     this.setState(()=>({
       query: query
     }))
     this.props.searchBookList(query)
-    if(query === ''){
-      this.props.emptyResults()
-    }
   }
 
   render(){
     const { emptyResults } = this.props
-    console.log(this.state.query)
     return(
       <div className="search-books-bar">
         <Link 
@@ -49,6 +47,10 @@ class SearchBooksBar extends Component {
       </div>
     )
   }
+}
+
+SearchBooksBar.propTypes ={
+  emptyResults: PropTypes.func.isRequired
 }
 
 export default SearchBooksBar

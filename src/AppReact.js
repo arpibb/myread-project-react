@@ -69,7 +69,6 @@ class BooksAppReact extends React.Component {
   searchAPIForBooks = (query) => {
     if(query.trim() !== ''){
       BooksAPI.search(query.trim()).then((queryResults) =>{
-        console.log(queryResults)
         if(!queryResults || queryResults.error){
           this.emptySearchResults()
         }

@@ -1,11 +1,19 @@
-import React, {Component} from 'react'
-import './App.css'
+import React from 'react'
+import PropTypes from 'prop-types'
 import Book from './Book'
+import './App.css'
 
-class SearchResults extends Component {
+const SearchResults =(props) => {
 
-  render(){
-    const { books, updateBookList, queryResults, booksIDs, addToBookList, removeFromMyBooks, shouldRender } = this.props
+    const { 
+      books,
+      updateBookList,
+      queryResults,
+      booksIDs,
+      addToBookList,
+      removeFromMyBooks,
+      shouldRender } = props
+
     let shelf
     let bookIDKeys = Object.keys(booksIDs)
     return(
@@ -32,7 +40,7 @@ class SearchResults extends Component {
                   shelf = {shelf}
                   addToBookList = {addToBookList}
                   updateBookList = {updateBookList}
-                  removeFromMyBooks ={removeFromMyBooks}
+                  removeFromMyBooks = {removeFromMyBooks}
                 />
               </li>
             )
@@ -41,6 +49,14 @@ class SearchResults extends Component {
       </div>
     )
   }
+
+SearchResults.propTypes = {
+  books: PropTypes.array.isRequired,
+  booksIDs: PropTypes.object.isRequired,
+  addToBookList: PropTypes.func.isRequired,
+  updateBookList: PropTypes.func.isRequired,
+  removeFromMyBooks: PropTypes.func.isRequired,
+  queryResults: PropTypes.array.isRequired,
 }
 
 export default SearchResults
