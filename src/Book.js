@@ -5,7 +5,6 @@ import './App.css'
 class Book extends Component {
 
   handleChange = (event,book, shelf) => {
-    console.log(book)
     const targetShelf = event.target.value
     if(targetShelf === 'none'){
       this.props.removeFromMyBooks(book)
@@ -43,11 +42,8 @@ class Book extends Component {
 }
 
 Book.propTypes = {
-  //book: PropTypes.object.isRequired,
-  //title: PropTypes.string.isRequired,
-  //thumbnail: PropTypes.string.isRequired,
-  //authors: PropTypes.array.isRequired,
-  //shelf: PropTypes.string.isRequired
+  book: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
 }
 
 export default Book

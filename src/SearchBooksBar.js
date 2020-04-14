@@ -14,6 +14,9 @@ class SearchBooksBar extends Component {
       query: query
     }))
     this.props.searchBookList(query)
+    if(query === ''){
+      this.props.emptyResults()
+    }
   }
 
   render(){

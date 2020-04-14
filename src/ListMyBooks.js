@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import BookShelf from './BookShelf'
 import './App.css'
 
-
 class ListMyBooks extends Component {
 
   componentDidMount(){
@@ -24,20 +23,20 @@ class ListMyBooks extends Component {
             <h1>MyReads</h1>
           </div>
           <div className="list-books-content">
-          {shelves && Object.keys(shelves).map((shelfName,idx) => {
-            return(
-              <BookShelf 
-                className="bookshelf"
-                key = {shelfName}
-                canonicalShelfName = {shelfName}
-                shelfName = {shelves[shelfName]}
-                books = {books}
-                updateBookList = {updateBookList}
-                removeFromMyBooks ={removeFromMyBooks}
+            {shelves && Object.keys(shelves).map((shelfName) => {
+              return(
+                <BookShelf 
+                  className="bookshelf"
+                  key = {shelfName}
+                  canonicalShelfName = {shelfName}
+                  shelfName = {shelves[shelfName]}
+                  books = {books}
+                  updateBookList = {updateBookList}
+                  removeFromMyBooks ={removeFromMyBooks}
                 />
             )})}
+          </div>
         </div>
-      </div>
       </div>
     )
   }
