@@ -5,13 +5,13 @@ import Book from './Book'
 class SearchResults extends Component {
 
   render(){
-    const { books, updateBookList, queryResults, booksIDs, addToBookList, removeFromMyBooks } = this.props
+    const { books, updateBookList, queryResults, booksIDs, addToBookList, removeFromMyBooks, shouldRender } = this.props
     let shelf
     let bookIDKeys = Object.keys(booksIDs)
     return(
       <div className="search-books-results">
         <ol className="books-grid">
-          {queryResults && queryResults.length !==0 && bookIDKeys.length === books.length && queryResults.map((book) => {
+          {shouldRender && queryResults && queryResults.length !==0 && bookIDKeys.length === books.length && queryResults.map((book) => {
             if(bookIDKeys.includes(book.id)){
               let indexOfBook = booksIDs[book.id]
               // console.log(indexOfBook)

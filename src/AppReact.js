@@ -16,7 +16,7 @@ class BooksAppReact extends React.Component {
   state = {
     books : [],
     queryResults: [],
-    booksIDs : {}
+    booksIDs : {},
   }
 
   componentDidMount(){
@@ -67,9 +67,9 @@ class BooksAppReact extends React.Component {
   }
 
   searchAPIForBooks = (query) => {
-    if(query !== ''){
-      BooksAPI.search(query).then((queryResults) =>{
-        console.log(typeof queryResults)
+    if(query.trim() !== ''){
+      BooksAPI.search(query.trim()).then((queryResults) =>{
+        console.log(queryResults)
         if(!queryResults || queryResults.error){
           this.emptySearchResults()
         }
@@ -80,9 +80,6 @@ class BooksAppReact extends React.Component {
         }
       })
     }
-    else {
-      this.emptySearchResults()
-    }
   }
 
   getBooksIDs = (booksOnShelves) => {
@@ -92,7 +89,7 @@ class BooksAppReact extends React.Component {
     }
     this.setState(()=>({
       booksIDs: booksIDs 
-    }),()=> {console.log(this.state.booksIDs)})
+    }))
   }
 
   emptySearchResults = () =>{

@@ -10,6 +10,7 @@ class SearchBooksBar extends Component {
   handleChange = (e) =>{
     e.preventDefault()
     let query = e.target.value
+    this.props.updateQuery(query)
     this.setState(()=>({
       query: query
     }))
@@ -21,6 +22,7 @@ class SearchBooksBar extends Component {
 
   render(){
     const { emptyResults } = this.props
+    console.log(this.state.query)
     return(
       <div className="search-books-bar">
         <Link 

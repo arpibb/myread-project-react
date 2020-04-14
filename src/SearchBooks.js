@@ -5,6 +5,15 @@ import SearchBooksBar from './SearchBooksBar'
 import SearchResults from './SearchResults'
 
 class SearchBooks extends Component {
+  state = {
+    query: ''
+  }
+
+  updateQuery = (query) =>{
+    this.setState(()=>({
+      query: query
+    }))
+  }
 
   render(){
     const {books, booksIDs, searchBookList, addToBookList, updateBookList, removeFromMyBooks, queryResults, emptyResults   } = this.props
@@ -13,6 +22,7 @@ class SearchBooks extends Component {
         <SearchBooksBar 
           searchBookList = {searchBookList}
           emptyResults = {emptyResults}
+          updateQuery = {this.updateQuery}
         />
         <SearchResults 
           books = { books }
@@ -21,7 +31,7 @@ class SearchBooks extends Component {
           addToBookList = {addToBookList}
           updateBookList = {updateBookList}
           removeFromMyBooks = {removeFromMyBooks}
-          emptyResults = {emptyResults}
+          shouldRender = {this.state.query !== ''}
         />
       </div>
     )
