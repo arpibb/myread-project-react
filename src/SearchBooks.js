@@ -16,7 +16,16 @@ class SearchBooks extends Component {
   }
 
   render(){
-    const {books, booksIDs, searchBookList, addToBookList, updateBookList, removeFromMyBooks, queryResults, emptyResults   } = this.props
+    const {
+      books,
+      booksIDs,
+      searchBookList,
+      addToBookList,
+      updateBookList,
+      removeFromMyBooks,
+      queryResults,
+      emptyResults   } = this.props
+
     return(
       <div>
         <SearchBooksBar 

@@ -3,6 +3,12 @@ import PropTypes from 'prop-types'
 import BookShelf from './BookShelf'
 import './App.css'
 
+const SHELVES = {
+  currentlyReading: 'currently reading',
+  wantToRead: 'want to read',
+  read: 'read',
+}
+
 class ListMyBooks extends Component {
 
   componentDidMount(){
@@ -13,7 +19,6 @@ class ListMyBooks extends Component {
     const { 
       books, 
       updateBookList, 
-      shelves, 
       removeFromMyBooks } = this.props
       
     return(
@@ -23,13 +28,13 @@ class ListMyBooks extends Component {
             <h1>MyReads</h1>
           </div>
           <div className="list-books-content">
-            {shelves && Object.keys(shelves).map((shelfName) => {
+            {SHELVES && Object.keys(SHELVES).map((shelfName) => {
               return(
                 <BookShelf 
                   className="bookshelf"
                   key = {shelfName}
                   canonicalShelfName = {shelfName}
-                  shelfName = {shelves[shelfName]}
+                  shelfName = {SHELVES[shelfName]}
                   books = {books}
                   updateBookList = {updateBookList}
                   removeFromMyBooks ={removeFromMyBooks}
@@ -45,7 +50,6 @@ class ListMyBooks extends Component {
 ListMyBooks.propTypes = {
   books: PropTypes.array.isRequired,
   updateBookList: PropTypes.func.isRequired,
-  shelves: PropTypes.object.isRequired,
   removeFromMyBooks: PropTypes.func.isRequired,
   emptyResults: PropTypes.func.isRequired
 }
