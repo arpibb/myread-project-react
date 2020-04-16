@@ -24,7 +24,8 @@ class SearchBooks extends Component {
       updateBookList,
       removeFromMyBooks,
       queryResults,
-      emptyResults   } = this.props
+      emptyResults
+    } = this.props
 
     return(
       <div>

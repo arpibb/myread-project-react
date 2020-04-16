@@ -9,7 +9,8 @@ const BookShelf  = (props)=> {
     shelfName,
     updateBookList,
     canonicalShelfName,
-    removeFromMyBooks } = props
+    removeFromMyBooks 
+  } = props
 
   const booksOnShelf = books.filter(book => book.shelf === canonicalShelfName)
   const numberOfBooksOnShelf = booksOnShelf.length

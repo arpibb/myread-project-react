@@ -19,7 +19,8 @@ class ListMyBooks extends Component {
     const { 
       books, 
       updateBookList, 
-      removeFromMyBooks } = this.props
+      removeFromMyBooks 
+    } = this.props
       
     return(
       <div>

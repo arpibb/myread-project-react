@@ -11,7 +11,8 @@ const SearchResults = (props) => {
     booksIDs,
     addToBookList,
     removeFromMyBooks,
-    shouldRender } = props
+    shouldRender 
+  } = props
 
   let shelf
   let bookIDKeys = Object.keys(booksIDs)

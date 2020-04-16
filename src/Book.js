@@ -23,7 +23,8 @@ class Book extends Component {
       title, 
       thumbnail, 
       authors, 
-      shelf } = this.props
+      shelf 
+    } = this.props
 
     return(
       <div className="book">
